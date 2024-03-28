@@ -1,17 +1,20 @@
-    
-    #opções para escolha
-     if opcao == 1:
-        #1. Número de palavras
-
-
+#TESTAR O FUNCIONAMENTO
     elif opcao == 2:
-        #2. Número de palavras distintas
+        # Número de palavras distintas
+        palavras = set(conteudo.split())
+        tamanho = len(palavras)
+        print("O número de palavras distintas é: ", tamanho)
 
     elif opcao == 3:
-        #3. Número de linhas
+        # Número de linhas
+        linhas = conteudo.splitlines()
+        tamanho = len(linhas)
+        print("O número de linhas é: ", tamanho)
+
+   
 
     elif opcao == 4:
-        #4. Frequência das palavras
+        #4. Frequência das palavras ->  https://programminghistorian.org/pt/licoes/contar-frequencias-palavras-python
 
     elif opcao == 5:
         #5. Imprimir uma linha específica
@@ -25,15 +28,4 @@
     elif opcao == 8:
         #8. Abrir um outro livro
 
-    elif opcao == 9:
-        #9. Encerrar o programa
-
     #elif opcao == 10: --> SE DER: 10. Gerar nuvem de palavras
-
-    else:
-        print("Opção inválida.")
-
-
-
-
-#frequência de palavras: https://programminghistorian.org/pt/licoes/contar-frequencias-palavras-python
