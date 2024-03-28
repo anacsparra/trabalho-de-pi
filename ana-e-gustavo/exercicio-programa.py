@@ -1,7 +1,14 @@
-# solicitação ao usuário do nome do
-def main():
-    arquivo=str(input("Escreva o nome do arquivo .txt:"))
-    arquivo=open(arquivo, "+") #esse + tá certo?
+# solicitação ao usuário do nome do arquivo
+arquivo=str(input("Escreva o nome do arquivo .txt: "))
+#ARRUMAR: entender o porquê ele não encontra o arquivo e como fazer para pegar o nome recebido e abrir
+def abrir_arquivo(arquivo):
+    try:
+        with open(arquivo, "r+") as arquivo1:
+            return arquivo1.read()
+    except FileNotFoundError:
+        print("Erro aquivo: {arquivo1}")
+opcao = 0
+
 
 while opcao!=10:
     # Menu Interativo
@@ -16,41 +23,15 @@ while opcao!=10:
     print("8. Abrir um outro livro")
     print("9. Encerrar o programa")
     #print("10. Gerar nuvem de palavras")
-    opcao=int(input("Escolha a opção:"))
-    
+    opcao=int(input("\n Escolha a opção: "))
+    texto = abrir_arquivo(arquivo)
+
     #opções para escolha
     if opcao == 1:
         #1. Número de palavras
-
-
-    elif opcao == 2:
-        #2. Número de palavras distintas
-
-    elif opcao == 3:
-        #3. Número de linhas
-
-    elif opcao == 4:
-        #4. Frequência das palavras
-
-    elif opcao == 5:
-        #5. Imprimir uma linha específica
-
-    elif opcao == 6:
-        #6. Buscar uma palavra e imprimir a linha em que aparece a primeira ocorrência
-
-    elif opcao == 7:
-        #7. Substituir todas as ocorrências de uma palavra por outra
-
-    elif opcao == 8:
-        #8. Abrir um outro livro
-
-    elif opcao == 9:
-        #9. Encerrar o programa
-
-    #elif opcao == 10: --> SE DER: 10. Gerar nuvem de palavras
+        #ARRUMAR: len() conta o número de caracteres, e não palavras
+        tamanho = len(texto)
+        print("O número de palavras é: ", tamanho)
 
     else:
         print("Opção inválida.")
-
-
-main()
