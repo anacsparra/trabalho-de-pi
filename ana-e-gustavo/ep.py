@@ -1,5 +1,5 @@
 import time
-from wordcloud import WordCloud
+from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 
 # Definindo função para abrir um artigo (.txt) diferente.
@@ -13,12 +13,18 @@ def ler_nome_arquivo(nome_arquivo):
     
 # Definindo função para gerar nuvem de palavras
 # Usando como base o site "https://amueller.github.io/word_cloud/auto_examples/simple.html#sphx-glr-auto-examples-simple-py"    
-def gerando_word_cloud(conteudo):
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(conteudo)
+def gerando_word_cloud(conteudo, numero_palavras):
+
+    # Remover as stopwords
+    stopwords = set(STOPWORDS)
+    stopwords.update(['e', 'da', 'o', 'a', 'uma', 'de', 'que', 'um', 'para', 'em', 'é', 'se', 'mas', 'seu', 'sua', 'no', 'na'])
+    # Função da wordcloud
+    wordcloud = WordCloud(stopwords=stopwords, max_words=numero_palavras, width=800, height=400, background_color='white').generate(conteudo)
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     plt.show()
+    return numero_palavras
 
 # Função Principal do Código
 def main():
@@ -126,7 +132,8 @@ def main():
 
         # 10. Gerar nuvem de palavras
         elif opcao == 10:
-            gerando_word_cloud(conteudo)
+            numero_palavras = int(input('Digite o número máximo de palavras a serem exibidas: '))
+            gerando_word_cloud(conteudo, numero_palavras)
             time.sleep(2)
 
         # 9. Fecha o Arquivo
